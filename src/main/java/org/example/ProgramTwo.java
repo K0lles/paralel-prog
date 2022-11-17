@@ -1,9 +1,9 @@
 package org.example;
 
 public class ProgramTwo extends Thread{
-    private FirstCounter firstCounter;
+    private Counter firstCounter;
 
-    public ProgramTwo(FirstCounter firstCounter) {
+    public ProgramTwo(Counter firstCounter) {
         this.firstCounter = firstCounter;
     }
 
@@ -11,8 +11,8 @@ public class ProgramTwo extends Thread{
     public void run() {
         for (int i = 0; i < 6; i++) {
             try {
-                this.firstCounter.incrementCounterA();
-                System.out.println("Counter: " + this.firstCounter.counterA);
+                this.firstCounter.increment();
+                System.out.println("Counter: " + this.firstCounter.value());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -20,8 +20,8 @@ public class ProgramTwo extends Thread{
 
         for (int i = 0; i < 6; i++) {
             try {
-                this.firstCounter.decrementCounterA();
-                System.out.println("Counter: " + this.firstCounter.counterA);
+                this.firstCounter.decrement();
+                System.out.println("Counter: " + this.firstCounter.value());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
